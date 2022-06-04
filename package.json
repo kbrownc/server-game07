@@ -1,0 +1,25 @@
+{
+  "name": "server-game07",
+  "version": "1.0.0",
+  "description": "For project-game07",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "cd.. && cd project-game07 && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [
+    "game07",
+    "cards"
+  ],
+  "author": "Kim Brown",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^7.2.1",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
