@@ -5,12 +5,12 @@ const app = express();
 const database = new Datastore('database.db');
 const published = new Date();
 database.loadDatabase();
-database.insert({
-	gameName: '1',
-	type: '2',
-	url: 'https://expo',
-	published: published.toDateString()
-});
+// database.insert({
+// 	gameName: '1',
+// 	type: '2',
+// 	url: 'https://expo',
+// 	published: published.toDateString()
+// });
 // console.log('delete row in db '); 
 // database.remove({_id:'0j4xm4nXG5YpM17j'});
 app.use(express.static( 'public' ));
