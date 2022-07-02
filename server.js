@@ -1,10 +1,10 @@
 const express = require('express');
 const Datastore = require('nedb');
 const app = express();
-
 const database = new Datastore('database.db');
-const published = new Date();
 database.loadDatabase();
+
+// const published = new Date();
 // database.insert({
 // 	gameName: '1',
 // 	type: '2',
@@ -58,5 +58,5 @@ app.get('/api/games', (req, res) => {
 	});
 });
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server started on Port ${port}`));
