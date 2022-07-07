@@ -20,6 +20,14 @@ database.loadDatabase();
 app.use(express.static('public'));
 app.use(express.json({ limit: '1mb' }));
 
+const path = require('path');
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
+
 // API: Delete record into database from UI (with response back to UI)
 app.delete('/api/games/:id', (req, res) => {
 	const id = req.params.id;
