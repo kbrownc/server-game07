@@ -1,30 +1,32 @@
 const express = require('express');
-const Datastore = require('nedb');
 const app = express();
-const database = new Datastore('database.db');
-database.loadDatabase();
-
-// const published = new Date();
-// database.insert({
-// 	gameName: '1',
-// 	type: '2',
-// 	url: 'https://expo',
-// 	published: published.toDateString(),
-//  note: 'A card game for all ages'
-// });
-
-// database.remove({_id:'0j4xm4nXG5YpM17j'});
-
-// database.update({_id: 'AOevL5vYceREZxr1'}, { $set: {url: 'test hard coded'}});
+const mongoose = require('mongoose');
+const Applist = require('./models/apps');
 
 app.use(express.static('public'));
 app.use(express.json({ limit: '1mb' }));
+
+const port = process.env.PORT || 5000;
+
+const uri = "mongodb+srv://kbrw:world13579@cluster0.jdaqg.mongodb.net/app-inv-test?retryWrites=true&w=majority";
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
+.then( (result) => app.listen(port, () => console.log(`Server started on Port ${port}`)))
+.catch( (err) => console.log(err))
 
 // const path = require('path');
 // if (process.env.NODE_ENV === 'production') {
 //   app.use(express.static(path.join(__dirname, 'client/build')));
 //   app.get('*', function(req, res) {
 //     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+//   }); 
+// }
+
+// Solution #2
+// const path = require('path');
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('project-game08/build'));
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "project-game08","build", "index.html"));
 //   }); 
 // }
 
@@ -66,6 +68,3 @@ app.get('/api/games', (req, res) => {
 		res.json(data);
 	});
 });
-
-const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`Server started on Port ${port}`));
