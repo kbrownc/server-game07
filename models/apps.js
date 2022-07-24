@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-mongoose.pluralize(null);
 
 const appsSchema = new Schema({
 	gameName: {

@@ -19,3 +19,7 @@
 	"published":"6/15/2021",
 	"note":"A board game for ages under 10"
 }
+
+
+//"proxy": "https://localhost:5000"
+  // "proxy": "https://server-game07.herokuapp.com"
