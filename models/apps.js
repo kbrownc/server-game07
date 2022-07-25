@@ -6,6 +6,10 @@ const appsSchema = new Schema({
 		type: String, 
 		erquired: true
 	},
+	type: {
+		type: String, 
+		erquired: true
+	},
 	url: {
 		type: String, 
 		erquired: true
